@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Set constants
+SEARCH_DIRECTORY="/";
+FILENAME="LoginDialog.xml"
+DESTINATION_DIRECTORY="/Applications/Vectorworks 2022/Settings/SeriesG/"
+
+# Find the first file named "LoginDialog.xml" in all directories in '/' drive and store the path in a variable
+path=$(find $SEARCH_DIRECTORY -name $FILENAME -print -quit)
+
+# Check if file is found
+if [ -n "$path" ]; then
+    # Move the file to the desired location
+    mv "$path" $DESTINATION_DIRECTORY
+    echo "File successfully moved to $DESTINATION_DIRECTORY"
+else
+    echo "File not found"
+fi
